@@ -37,14 +37,14 @@ namespace Sololearn_Pig_Latin
         {
             //comment out for Sololearn submission
             // test input for visual studio
-            string sentence = "This is a pig latin converter";
+            string inputSentence = "This is a pig latin converter";
 
             //comment out before for visual studio
             // get the input from Sololearn
-            //string sentence = Console.ReadLine();
+            //string inputSentence = Console.ReadLine();
 
             // New pig latin converter object
-            PigLatinSentenceConverter sentenceconverter = new PigLatinSentenceConverter(sentence);
+            PigLatinSentenceConverter sentenceconverter = new PigLatinSentenceConverter(inputSentence);
 
             // send cards to be ranked and output tanking
             Console.WriteLine(sentenceconverter.OutputSentence());
@@ -58,18 +58,17 @@ namespace Sololearn_Pig_Latin
         class PigLatinSentenceConverter
         {
             // CONSTANTS
-            private const string ADD_ON = "ay";
-            private const int firstCharacter = 0;
-            private const int secondCharacter = 1;
+            private const int POSITION_FIRST_CHARACTER = 0;
+            private const int POSITION_SECOND_CHARACTER = 1;
 
             // array to split the input on a space
-            private string[] oldSentence;
+            private readonly string[] oldSentence;
 
             // variable to store word pulled from sentence array
             private string newWord = "";
 
             // variable to store front character pulled from temp word
-            private string tempLetter = "";
+            private string originalFirstCharacter = "";
 
             // to build new sentence
             private ArrayList newSentence = new ArrayList();
@@ -82,14 +81,11 @@ namespace Sololearn_Pig_Latin
 
                 // change the words
                 ChangeWords();
-
-                // make a new sentence
-                BuildNewSentence();
             }
 
             // method to change the words
             private void ChangeWords()
-            {             
+            {
                 // every word in sentence
                 foreach (string word in oldSentence)
                 {
@@ -97,48 +93,37 @@ namespace Sololearn_Pig_Latin
                     newWord = "";
 
                     // store first character
-                    tempLetter = word[firstCharacter].ToString();
+                    originalFirstCharacter = word[POSITION_FIRST_CHARACTER].ToString();
 
-                    // loop through letters starting with second character
-                    for (int i = secondCharacter; i < word.Length; i++)
-                    {
-                        // add to current tempword with next letter
-                        newWord += word[i].ToString();
-                    }
+                    // get string starting from second letter to the end of original word
+                    newWord += word.Substring(POSITION_SECOND_CHARACTER);
 
-                    // last pass dont add the space
-                    newWord += tempLetter + ADD_ON;
+                    // add onto end of new word original first character along with "ay"
+                    newWord += $"{originalFirstCharacter}ay";
 
-                    //build the new sentence
+                    // build the new sentence
                     BuildNewSentence();
                 }
             }
 
             // method to build the new sentence
-            private void BuildNewSentence()
-            {
-                // add temp word to new sentence
-                newSentence.Add(newWord + " ");
-            }
+            private void BuildNewSentence() => newSentence.Add($"{newWord} ");
 
             // output the new sentence from array list
             public string OutputSentence()
             {
                 // make new string builder object
-                StringBuilder s = new StringBuilder();
+                StringBuilder newString = new StringBuilder();
 
-                // remove extra word
-                newSentence.RemoveAt(oldSentence.Length - 1);
-
-                // loop through sentence array list
+                // loop through new sentence array list
                 foreach (string word in newSentence)
                 {
-                    // append the word
-                    s.Append(word);
+                    // append each word
+                    newString.Append(word);
                 }
 
-                // return the new string
-                return s.ToString();
+                // return the new sentence string
+                return newString.ToString();
             }
         }
     }
