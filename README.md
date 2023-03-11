@@ -1,4 +1,4 @@
-# Sololearn-Pig-Latin
+# Sololearn-CSharp-Pig-Latin
 Pig Latin Converter Project on Sololearn in C#
 
 You have two friends who are speaking Pig Latin to each other! Pig Latin is the same words in the same order except that you take the first letter of each word and put it on the end, then you add 'ay' to the end of that. ("road" = "oadray") 
