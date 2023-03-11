@@ -54,7 +54,7 @@ namespace Sololearn_Pig_Latin
             Console.ReadKey();
         }
 
-        // this class definition contains all the properties and functions to handle and evaluate the pig lating sentence converter
+        // this class definition contains all the properties and functions to handle and evaluate the pig latin sentence converter
         class PigLatinSentenceConverter
         {
             // CONSTANTS
