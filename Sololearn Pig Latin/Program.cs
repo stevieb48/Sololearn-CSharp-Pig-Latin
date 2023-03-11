@@ -44,17 +44,17 @@ namespace Sololearn_Pig_Latin
             //string inputSentence = Console.ReadLine();
 
             // New pig latin converter object
-            PigLatinSentenceConverter sentenceconverter = new PigLatinSentenceConverter(inputSentence);
+            PigLatinSentenceConverter sentenceConverter = new PigLatinSentenceConverter(inputSentence);
 
             // send cards to be ranked and output tanking
-            Console.WriteLine(sentenceconverter.OutputSentence());
+            Console.WriteLine(sentenceConverter.OutputSentence());
 
             //comment out for Sololearn submission
             // hold prompt for testing
             Console.ReadKey();
         }
 
-        // this class contains all the properties and functions to handle and evaluate the pig lating sentence converter
+        // this class definition contains all the properties and functions to handle and evaluate the pig lating sentence converter
         class PigLatinSentenceConverter
         {
             // CONSTANTS
