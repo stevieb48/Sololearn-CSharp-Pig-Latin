@@ -46,7 +46,7 @@ namespace Sololearn_Pig_Latin
             // New pig latin converter object
             PigLatinSentenceConverter sentenceConverter = new PigLatinSentenceConverter(inputSentence);
 
-            // send cards to be ranked and output tanking
+            // send cards to be ranked and output ranking
             Console.WriteLine(sentenceConverter.OutputSentence());
 
             //comment out for Sololearn submission
